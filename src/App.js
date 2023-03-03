@@ -3,6 +3,7 @@ import { Switch, Route, NavLink } from "react-router-dom";
 import Movie from "./components/Movie";
 import FavMovie from "./components/FavMovie";
 import { movies } from "./movies";
+
 function App() {
   const [sira, setSira] = useState(0);
   const [favMovies, setFavMovies] = useState([]);
@@ -19,9 +20,19 @@ function App() {
   }
   console.log("dışarısı " + sira);
 
-  function favFilm() {
-    const favfilm = movies[sira];
-    setFavMovies([...favMovies, favfilm]);
+  function favFilmEkle() {
+    let favfilm = movies[sira];
+    console.log(favfilm.id);
+    console.log("gdfgfr");
+    for (let i = 0; i <= favMovies.length; i++) {
+      if (favMovies.length === 0) {
+        setFavMovies([favfilm]);
+      } else if (favfilm.id === favMovies[i].id) {
+        setFavMovies([...favMovies]);
+      } else {
+        setFavMovies([...favMovies, favfilm]);
+      }
+    }
   }
 
   return (
@@ -55,7 +66,7 @@ function App() {
               Sıradaki
             </button>
             <button
-              onClick={favFilm}
+              onClick={favFilmEkle}
               className="select-none px-4 py-2 bg-blue-700 hover:bg-blue-600 text-white"
             >
               Listeme ekle
@@ -66,7 +77,13 @@ function App() {
         <Route path="/listem">
           <div>
             {favMovies.map((movie) => (
-              <FavMovie key={movie.id} title={movie.title} id={movie.id} />
+              <FavMovie
+                favMovies={favMovies}
+                setFavMovies={setFavMovies}
+                key={movie.id}
+                title={movie.title}
+                id={movie.id}
+              />
             ))}
           </div>
         </Route>
