@@ -3,6 +3,8 @@ import {
   ADD_FAVORITE,
   REMOVE_FAVORITE,
   SONRAKI_FILM,
+  ONCEKI_FILM,
+  ILK_FILM,
 } from "../actions/ilkAction";
 
 const initialState = { sira: 0, favMovies: [] };
@@ -15,6 +17,17 @@ const reducer = (state = initialState, action) => {
       } else {
         return { ...state, sira: state.sira + 1 };
       }
+    case ONCEKI_FILM:
+      if (state.sira === 0) {
+        return { ...state, sira: 19 };
+      } else {
+        // console.log("2.if " + state.sira);
+        return { ...state, sira: state.sira - 1 };
+      }
+
+    case ILK_FILM:
+      return { ...state, sira: 0 };
+
     case ADD_FAVORITE:
       let favfilm = movies[state.sira];
       console.log(favfilm.id);

@@ -1,7 +1,12 @@
 import { Switch, Route, NavLink } from "react-router-dom";
 import Movie from "./components/Movie";
 import FavMovie from "./components/FavMovie";
-import { sonrakiFilm, addFavorite } from "./actions/ilkAction";
+import {
+  sonrakiFilm,
+  addFavorite,
+  oncekiFilm,
+  ilkFilm,
+} from "./actions/ilkAction";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
@@ -10,6 +15,13 @@ function App() {
   const favMovies = useSelector((depo) => depo.favMovies);
   function sonrakiFilmFonk() {
     dispatch(sonrakiFilm());
+  }
+
+  function oncekiFilmFonk() {
+    dispatch(oncekiFilm());
+  }
+  function ilkFilmFonk() {
+    dispatch(ilkFilm());
   }
   function favFilmEkleFonk() {
     dispatch(addFavorite());
@@ -39,6 +51,19 @@ function App() {
           <Movie />
 
           <div className="flex gap-3 justify-end py-3">
+            <button
+              onClick={ilkFilmFonk}
+              className="select-none px-4 py-2 border border-blue-700 text-blue-700 hover:border-blue-500 hover:text-blue-500"
+            >
+              Başa dön
+            </button>
+
+            <button
+              onClick={oncekiFilmFonk}
+              className="select-none px-4 py-2 border border-blue-700 text-blue-700 hover:border-blue-500 hover:text-blue-500"
+            >
+              Önceki
+            </button>
             <button
               onClick={sonrakiFilmFonk}
               className="select-none px-4 py-2 border border-blue-700 text-blue-700 hover:border-blue-500 hover:text-blue-500"
