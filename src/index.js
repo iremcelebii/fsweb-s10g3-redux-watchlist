@@ -3,12 +3,14 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
+import logger from "redux-logger";
+
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import reducer from "./reducers";
 
-const depo = createStore(reducer);
+const depo = createStore(reducer, applyMiddleware(logger));
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={depo}>
