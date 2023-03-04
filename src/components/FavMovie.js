@@ -1,10 +1,11 @@
-export default function FavMovie({ setFavMovies, favMovies, title, id }) {
+export default function FavMovie({ state, setState, title, id }) {
   function favFilmCikar(iddegeri) {
-    const filtelenmismovie = favMovies.filter(
+    const filtelenmismovie = state.favMovies.filter(
       (movie) => movie.id !== Number(iddegeri)
     );
 
-    setFavMovies(filtelenmismovie);
+    // setFavMovies(filtelenmismovie);
+    setState({ ...state, favMovies: filtelenmismovie });
   }
 
   return (

@@ -3,34 +3,39 @@ import { Switch, Route, NavLink } from "react-router-dom";
 import Movie from "./components/Movie";
 import FavMovie from "./components/FavMovie";
 import { movies } from "./movies";
+const initialState = { sira: 0, favMovies: [] };
 
 function App() {
-  const [sira, setSira] = useState(0);
-  const [favMovies, setFavMovies] = useState([]);
+  const [state, setState] = useState(initialState);
+  // const [sira, setSira] = useState(0);
+  // const [favMovies, setFavMovies] = useState([]);
 
   function sonrakiFilm() {
-    if (sira + 1 >= movies.length) {
+    if (state.sira + 1 >= movies.length) {
       // setSira(sira - movies.length + 1);
-      setSira(0);
-      console.log("1.if " + sira);
+      setState({ ...state, sira: 0 });
+      // console.log("1.if " + sira);
     } else {
-      setSira(sira + 1);
-      console.log("2. if  " + sira);
+      setState({ ...state, sira: state.sira + 1 });
+      // console.log("2. if  " + sira);
     }
   }
-  console.log("dışarısı " + sira);
+  // console.log("dışarısı " + sira);
 
   function favFilmEkle() {
-    let favfilm = movies[sira];
+    let favfilm = movies[state.sira];
     console.log(favfilm.id);
-    console.log("gdfgfr");
-    for (let i = 0; i <= favMovies.length; i++) {
-      if (favMovies.length === 0) {
-        setFavMovies([favfilm]);
-      } else if (favfilm.id === favMovies[i].id) {
-        setFavMovies([...favMovies]);
+
+    for (let i = 0; i <= state.favMovies.length; i++) {
+      if (state.favMovies.length === 0) {
+        // setFavMovies([favfilm]);
+        setState({ ...state, favMovies: [favfilm] });
+      } else if (favfilm.id === state.favMovies[i].id) {
+        // setFavMovies([...favMovies]);
+        setState(state);
       } else {
-        setFavMovies([...favMovies, favfilm]);
+        // setFavMovies([...favMovies, favfilm]);
+        setState({ ...state, favMovies: [...state.favMovies, favfilm] });
       }
     }
   }
@@ -56,7 +61,7 @@ function App() {
       </nav>
       <Switch>
         <Route exact path="/">
-          <Movie sira={sira} />
+          <Movie sira={state.sira} />
 
           <div className="flex gap-3 justify-end py-3">
             <button
@@ -76,10 +81,10 @@ function App() {
 
         <Route path="/listem">
           <div>
-            {favMovies.map((movie) => (
+            {state.favMovies.map((movie) => (
               <FavMovie
-                favMovies={favMovies}
-                setFavMovies={setFavMovies}
+                state={state}
+                setState={setState}
                 key={movie.id}
                 title={movie.title}
                 id={movie.id}

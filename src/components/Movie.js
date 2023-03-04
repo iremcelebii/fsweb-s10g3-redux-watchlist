@@ -4,15 +4,6 @@ export default function Movie(props) {
   const { sira } = props;
   const movie = movies[sira];
 
-  // let movie = "";
-  // // if (sira >= movies.length) {
-  // //   movie = movies[sira % movies.length];
-  // // } else {
-  // //   movie = movies[sira];
-  // // }
-  // sira >= movies.length
-  //   ? (movie = movies[sira % movies.length])
-  //   : (movie = movies[sira]);
   return (
     <div className="flex bg-white shadow-lg items-start">
       <img
