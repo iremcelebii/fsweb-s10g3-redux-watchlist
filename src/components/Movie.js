@@ -1,7 +1,8 @@
 import { movies } from "./../movies";
-
+import { useSelector } from "react-redux";
 export default function Movie(props) {
-  const { sira } = props;
+  const sira = useSelector((depo) => depo.sira);
+
   const movie = movies[sira];
 
   return (
