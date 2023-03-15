@@ -34,7 +34,7 @@ function App() {
           to="/"
           exact
           className="py-3 px-6 "
-          activeClassName="bg-white shadow-sm text-blue-600"
+          activeClassName="bg-white shadow-sm text-blue-600 "
         >
           Filmler
         </NavLink>
@@ -53,26 +53,26 @@ function App() {
           <div className="flex gap-3 justify-end py-3">
             <button
               onClick={ilkFilmFonk}
-              className="select-none px-4 py-2 border border-blue-700 text-blue-700 hover:border-blue-500 hover:text-blue-500"
+              className="select-none px-4 py-2 border background text-white hover:border-blue-500 hover:text-blue-500"
             >
               Başa dön
             </button>
 
             <button
               onClick={oncekiFilmFonk}
-              className="select-none px-4 py-2 border border-blue-700 text-blue-700 hover:border-blue-500 hover:text-blue-500"
+              className="select-none px-4 py-2 border background text-white hover:border-blue-500 hover:text-blue-500"
             >
               Önceki
             </button>
             <button
               onClick={sonrakiFilmFonk}
-              className="select-none px-4 py-2 border border-blue-700 text-blue-700 hover:border-blue-500 hover:text-blue-500"
+              className="select-none px-4 py-2 border background text-white hover:border-blue-500 hover:text-blue-500"
             >
               Sıradaki
             </button>
             <button
               onClick={favFilmEkleFonk}
-              className="select-none px-4 py-2 bg-blue-700 hover:bg-blue-600 text-white"
+              className="select-none px-4 py-2 background hover:bg-blue-600 text-white"
             >
               Listeme ekle
             </button>

@@ -10,7 +10,7 @@ export default function FavMovie({ title, id }) {
 
   return (
     <div className="flex p-3 pl-4 bg-white mb-2 shadow items-center group">
-      <div className="pr-4 flex-1" id={id}>
+      <div className="pr-4 flex-1 " id={id}>
         {title}
       </div>
       <button
